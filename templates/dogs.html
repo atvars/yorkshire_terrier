@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yorkshire Terrier</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     ({% for dog in dogs %}
         {{ dog.cities_name }}<br>
         {{ dog.post_code }}<br>
@@ -13,5 +7,4 @@
         {{ dog.dogs_age }}<br>
         {{ dog.about_dog }}<br>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
