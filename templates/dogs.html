@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-    ({% for dog in dogs %}
-        {{ dog.cities_name }}<br>
-        {{ dog.post_code }}<br>
-        {{ dog.dogs_name }}<br>
-        {{ dog.dogs_age }}<br>
-        {{ dog.about_dog }}<br>
-        {{ dog.photo }}<br>
-        {{ dog.contact_info }}<br>
-    {% endfor %}
+   
+
+    <ul class="collapsible">
+        {% for dog in dogs %}
+            <li>
+                <div class="collapsible-header white-text light-green  text-shadow darken-2"><i class="material-icons">arrow_drop_down</i>
+                    <strong>{{ dog.cities_name }}</strong> : {{ dog.post_code }}
+                </div>
+                <div class="collapsible-body">
+                    <strong>{{ dog.dogs_name }}</strong><br>
+                    <strong>age: </strong> {{ dog.dogs_age }}<br>
+                    <p><strong>About {{ dog.dogs_name }}</strong> : {{ dog.about_dog }}</p>
+                        <strong>Contact Info</strong>: {{ dog.contact_info }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -25,7 +25,7 @@
                     <li><a href="{{ url_for('get_dogs') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                        <li><a href="#">Add My Dog</a></li>
+                        <li><a href="{{ url_for('add_dog') }}">Add My Dog</a></li>
                         <li><a href="#">Manage Cities</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
@@ -41,7 +41,7 @@
             <li><a href="{{ url_for('get_dogs') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                <li><a href="#">Add My Dog</a></li>
+                <li><a href="{{ url_for('add_dog') }}">Add My Dog</a></li>
                 <li><a href="#">Manage Cities</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
