@@ -102,8 +102,24 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_dog")
+@app.route("/add_dog", methods=["GET", "POST"])
 def add_dog():
+    if request.method == "POST":
+        found_partner = "on" if request.form.get("found_partner") else "off"
+        dog = {
+            "cities_name": request.form.get("cities_name"),
+            "post_code": request.form.get("post_code"),
+            "dogs_name": request.form.get("dogs_name"),
+            "dogs_age": request.form.get("dogs_age"),
+            "about_dog": request.form.get("about_dog"),
+            "contact_info": request.form.get("contact_info"),
+            "found_partner": found_partner,
+            "created_by": session["user"]
+        }
+        mongo.db.dogs.insert_one(dog)
+        flash("Your Dog Successfully Added")
+        return redirect(url_for("get_dogs"))
+
     cities = mongo.db.cities.find().sort("cities_name", 1)
     return render_template("add_dog.html", cities=cities)
 
