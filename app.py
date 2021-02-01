@@ -124,6 +124,13 @@ def add_dog():
     return render_template("add_dog.html", cities=cities)
 
 
+@app.route("/edit_dog/<dog_id>", methods=["GET", "POST"])
+def edit_dog(dog_id):
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    cities = mongo.db.cities.find().sort("cities_name", 1)
+    return render_template("edit_dog.html", dog=dog, cities=cities)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
