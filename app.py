@@ -86,7 +86,7 @@ def profile(username):
     # session username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    # 
+
     if session["user"]:
         return render_template("profile.html", username=username)
 
@@ -102,6 +102,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# add a new dog post
 @app.route("/add_dog", methods=["GET", "POST"])
 def add_dog():
     if request.method == "POST":
@@ -113,6 +114,7 @@ def add_dog():
             "dogs_age": request.form.get("dogs_age"),
             "about_dog": request.form.get("about_dog"),
             "contact_info": request.form.get("contact_info"),
+            "img_url": request.form.get("img_url"),
             "found_partner": found_partner,
             "created_by": session["user"]
         }
@@ -124,11 +126,37 @@ def add_dog():
     return render_template("add_dog.html", cities=cities)
 
 
+# edit your dog post
 @app.route("/edit_dog/<dog_id>", methods=["GET", "POST"])
 def edit_dog(dog_id):
+    if request.method == "POST":
+        found_partner = "on" if request.form.get("found_partner") else "off"
+        submit = {
+            "cities_name": request.form.get("cities_name"),
+            "post_code": request.form.get("post_code"),
+            "dogs_name": request.form.get("dogs_name"),
+            "dogs_age": request.form.get("dogs_age"),
+            "about_dog": request.form.get("about_dog"),
+            "contact_info": request.form.get("contact_info"),
+            "img_url": request.form.get("img_url"),
+            "found_partner": found_partner,
+            "created_by": session["user"]
+        }
+        mongo.db.dogs.update({"_id": ObjectId(dog_id)}, submit)
+        flash("Your Dog Post Successfully Edited")
+        return redirect(url_for("get_dogs"))
+
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     cities = mongo.db.cities.find().sort("cities_name", 1)
     return render_template("edit_dog.html", dog=dog, cities=cities)
+
+
+# delete dog post
+@app.route("/delete_dog/<dog_id>")
+def delete_dog(dog_id):
+    mongo.db.dogs.remove({"_id": ObjectId(dog_id)})
+    flash("Your Dog Add Successfully Deleted")
+    return redirect(url_for("get_dogs"))
 
 
 if __name__ == "__main__":

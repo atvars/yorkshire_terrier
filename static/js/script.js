@@ -18,6 +18,13 @@ $(document).ready(function(){
     $('select').formSelect();
   });
 
+// delete confirmation modal 
+$(document).ready(function(){
+    $('.modal').modal(); 
+ });
+
+
+ 
 // to validate cities drop down to make sure its do validate and makes sure you have chosen one option
 // Thanks for code snipet to Code Institute walk thru video
 $(document).ready(function(){

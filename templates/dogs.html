@@ -7,13 +7,13 @@
         {% for dog in dogs %}
             <li>
                 <div class="collapsible-header white-text light-green               text-shadow darken-2">
-                    <div class="col s3">
+                    <div class="col s12">
                         <i class="material-icons">arrow_drop_down</i>
-                        <a class="green accent-3 btn-small">Done</a>
-                        <a href="{{ url_for('edit_dog', dog_id=dog._id) }}" class="ight-blue accent-2 btn-small">Edit</a>
-                    </div>
-                     <div class="col s9">
-                            <strong>{{ dog.cities_name }}</strong> : {{ dog.post_code }}
+                        {% if session.user|lower == dog.created_by|lower %}
+                            <a href="{{ url_for('edit_dog', dog_id=dog._id) }}" 
+                            class="ight-blue accent-2 btn-small">Edit</a>
+                        {% endif %}
+                        <strong>{{ dog.cities_name }}</strong> : {{ dog.post_code }}
                         {% if dog.found_partner == "on" %}
                             <i class="material-icons prefix red-text text-lighten-2 tooltipped"
                             data-position="right" data-tooltip="Already Found a Partner">favorite</i>
@@ -25,6 +25,9 @@
                     <strong>age: </strong> {{ dog.dogs_age }}<br>
                     <p><strong>About {{ dog.dogs_name }}</strong> : {{ dog.about_dog }}</p>
                         <strong>Contact Info</strong>: {{ dog.contact_info }}
+                        <div class="col l6 s12">
+                        <img class="responsive-img" src="{{ dog.img_url }}" alt="image of {{ dog.dog_name }}" />
+                    </div>
                         <p><em>by: {{ dog.created_by }}</em></p>
                 </div>
             </li>

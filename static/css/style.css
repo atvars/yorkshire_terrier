@@ -14,3 +14,39 @@
     margin: 5px;
     line-height: 42px;
 }
+
+@media only screen and (max-width: 992px){
+nav a.brand-logo {
+    left: 35%;
+    transform: translateX(-50%);
+}}
+
+a.btn-large.red{
+    margin:10px;
+}
+
+
+
+.modal {
+   top: 20% !important;
+   border-radius: 6px;
+   padding: 0 10px;
+   max-width: 400px;
+   text-transform: none;   
+}
+.edit-modal {
+    height: 195px;
+}
+
+.modal .modal-content {
+   padding: 24px 30px 0px 30px;
+}
+
+.modal .modal-footer {
+    text-align: center;
+}
+
+.card-image img {
+    height: 270px;
+    object-fit: cover;
+}
