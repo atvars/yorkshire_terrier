@@ -159,6 +159,27 @@ def delete_dog(dog_id):
     return redirect(url_for("get_dogs"))
 
 
+# manage cities
+@app.route("/get_cities")
+def get_cities():
+    cities = list(mongo.db.cities.find().sort("cities_name", 1))
+    return render_template("cities.html", cities=cities)
+
+
+# adding new citie
+@app.route("/add_cities", methods=["GET", "POST"])
+def add_cities():
+    if request.method == "POST":
+        citie = {
+            "cities_name": request.form.get("cities_name")
+        }
+        mongo.db.cities.insert_one(citie)
+        flash("New City Added")
+        return redirect(url_for("get_cities"))
+
+    return render_template("add_cities.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
