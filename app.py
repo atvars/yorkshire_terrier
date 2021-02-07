@@ -8,15 +8,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
 app = Flask(__name__)
+
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-
 
 @app.route("/")
 @app.route("/get_dogs")
@@ -178,6 +177,29 @@ def add_cities():
         return redirect(url_for("get_cities"))
 
     return render_template("add_cities.html")
+
+
+# for editing cities
+@app.route("/edit_cities/<citie_id>", methods=["GET", "POST"])
+def edit_cities(citie_id):
+    if request.method == "POST":
+        submit = {
+            "cities_name": request.form.get("cities_name")
+        }
+        mongo.db.cities.update({"_id": ObjectId(citie_id)}, submit)
+        flash("City Successfully Updated")
+        return redirect(url_for("get_cities"))
+
+    citie = mongo.db.cities.find_one({"_id": ObjectId(citie_id)})
+    return render_template("edit_cities.html", citie=citie)
+
+
+# for deleting city
+@app.route("/delete_cities/<citie_id>")
+def delete_cities(citie_id):
+    mongo.db.cities.remove({"_id": ObjectId(citie_id)})
+    flash("City Successfully Deleted")
+    return redirect(url_for("get_cities"))
 
 
 if __name__ == "__main__":

@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align light-green-text text-shadow darken-2">Add My Dog</h3>
+    <h3 class="center-align light-green-text text-shadow darken-2">Eddit My Dog Post</h3>
 
 <div class="row card-panel gray lighten-5">
-    <form class="col s12" method="POST" action="{{ url_for('add_dog') }}">
+    <form class="col s12" method="POST" action="{{ url_for('edit_dog', dog_id=dog._id) }}">
         <!--To choose in which city you are-->
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">topic</i>
                 <select id="cities_name" name="cities_name" class="validate" required>
-                    <option value="" disabled selected>Choose City</option>
-                    {% for city in cities %}
-                        <option value="{{ city.cities_name }}">{{ city.cities_name }}</option>
-                    {% endfor %}
+                    <option value="" disabled>Choose City</option>
+                    {% for cities in cities %}
+                            {% if cities.cities_name == dog.cities_name %}
+                                <option value="{{ cities.cities_name }}" selected>{{ cities.cities_name }}</option>
+                            {% else %}
+                                <option value="{{ cities.cities_name }}">{{ cities.cities_name }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                     <label>City Select</label>
             </div>
@@ -22,7 +26,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">edit_location</i>
-                <input id="post_code" name="post_code" minlength="6" maxlength="8" type="text" class="validate" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" required>
+                <input id="post_code" name="post_code" minlength="6" maxlength="8" type="text" value="{{ dog.post_code }}" class="validate" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" required>
                 <label for="post_code">Post Code</label>
             </div>
         </div>
@@ -30,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">pets</i>
-                <input id="dogs_name" name="dogs_name" minlength="3" maxlength="20" type="text" class="validate" pattern="^[a-zA-Z]{3,20}$" required>
+                <input id="dogs_name" name="dogs_name" minlength="3" maxlength="20" type="text" value="{{ dog.dogs_name }}" class="validate" pattern="^[a-zA-Z]{3,20}$" required>
                 <label for="dogs_name">Dogs Name</label>
             </div>
         </div>
@@ -38,7 +42,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">pets</i>
-                <input id="dogs_age" name="dogs_age" minlength="1" maxlength="2" type="text" class="validate" pattern="^[0-9]{1,2}$" required>
+                <input id="dogs_age" name="dogs_age" minlength="1" maxlength="2" type="text" value="{{ dog.dogs_age }}" class="validate" pattern="^[0-9]{1,2}$" required>
                 <label for="dogs_age">Dogs Age</label>
             </div>
         </div>
@@ -46,7 +50,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">notes</i>
-                <textarea id="about_dog" name="about_dog" minlength="50" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{50,300}$" required></textarea>
+                <textarea id="about_dog" name="about_dog" minlength="50" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{50,300}$" required> {{- dog.about_dog -}} </textarea>
                 <label for="about_dog">About a Dog</label>
             </div>
         </div>
@@ -54,7 +58,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">smartphone</i>
-                <input id="contact_info" name="contact_info" minlength="11" maxlength="11" type="text" class="validate" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" required>
+                <input id="contact_info" name="contact_info" minlength="11" maxlength="11" type="text" class="validate" value="{{ dog.contact_info }}"pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" required>
                 <label for="contact_info">Contact Mobile Nummber</label>
             </div>
         </div>
@@ -62,32 +66,63 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix light-green-text text-darken-2">insert_photo</i>
-                     <input id="img_url" name="img_url" type="text" minlength="5" pattern="https://.*" class="validate"
+                    <input id="img_url" name="img_url" type="text" minlength="5"  value="{{ dog.img_url }}"  pattern="https://.*" class="validate"
                             required />
-                        <label for="img_url">Add An Image URL</label>
+                        <label for="image_url">Add an image URL</label>
                 </div>
             </div>
         <!--For letting everybody know that your dog found partner-->
         <div class="row">
-				<div class="input-field col s12">
-					<div class="switch">
+                <div class="input-field col s12">
+                    <div class="switch">
                         <i class="material-icons prefix light-green-text text-darken-2">favorite</i>
-						<label for="found_partner">
-                            <input type="checkbox" id="found_partner" name="found_partner">
+                        <label for="found_partner">
+                            {% if dog.found_partner == "on" %}
+                                <input type="checkbox" id="found_partner" name="found_partner" checked>
+                            {% else %}
+                                <input type="checkbox" id="found_partner" name="found_partner">
+                            {% endif %}
                             <span class="lever"></span>
                             Found Partner
                         </label>
-					</div>
-				</div>
+                    </div>
+                </div>
             </div>
-            
             <!--For submit button-->
             <div class="row">
                 <div class="col s12 center-align">
-                    <button type="submit" class="btn-large light-green darken-2 text-shadow">Add My Dog<i class="material-icons right">add</i>
+                    <button type="submit" class="btn-small light-green darken-2 text-shadow">Edit Post<i class="material-icons right">create</i>
                     </button>
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_dogs') }}" class="btn-small orange text-shadow">
+                        Cancel <i class="material-icons right">Cancel</i>
+                    </a>
+                    <!--delete button-->
+                    <a data-target="{{ dog._id }}" class="btn-small red text-shadow modal-trigger">Delete <i class="material-icons right">delete</i>
+                    </a>                
                 </div>
             </div>
+            <!--Confirming for deleting-->
+            <div id="{{ dog._id }}" class="modal center-align">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <h2 class="red-text flow-text"><strong>Warning!</strong></h2>
+                            <h5 class="red-text"><strong>Deleting is permanent!</strong></h5>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer modal-btns">
+                        <a class="btn-small orange text-shadow modal-close"
+                        href="#">
+                            Cancel <i class="material-icons right">cancel</i>
+                            </a>
+                            <a class="btn-small red text-shadow"
+                            href="{{ url_for('delete_dog', dog_id=dog._id) }}">
+                            Delete <i class="material-icons right">delete</i>
+                            </a>
+                    </div>
+        </div>
     </form>
 </div>
 
