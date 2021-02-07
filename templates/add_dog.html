@@ -12,7 +12,7 @@
                 <select id="cities_name" name="cities_name" class="validate" required>
                     <option value="" disabled>Choose City</option>
                     {% for cities in cities %}
-                            {% if cities.cities_name == dog.cities_name %}
+                            {% if cities.cities_name == dogs.cities_name %}
                                 <option value="{{ cities.cities_name }}" selected>{{ cities.cities_name }}</option>
                             {% else %}
                                 <option value="{{ cities.cities_name }}">{{ cities.cities_name }}</option>
