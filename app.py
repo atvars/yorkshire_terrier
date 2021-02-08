@@ -25,6 +25,14 @@ def get_dogs():
     return render_template("dogs.html", dogs=dogs)
 
 
+# Search option for dogs
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    dogs = list(mongo.db.dogs.find({"$text": {"$search": query}}))
+    return render_template("dogs.html", dogs=dogs)
+
+
 # Registering new user
 @app.route("/register", methods=["GET", "POST"])
 def register():

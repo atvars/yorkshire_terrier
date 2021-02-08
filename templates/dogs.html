@@ -3,6 +3,26 @@
    
 <h3 class="center-align light-green-text text-shadow darken-2">All Dog Posts</h3>
 
+ <div class="row card-panel grey lighten-5">
+        <form action="{{ url_for('search') }}" method="post" class="col s12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="material-icons prefix light-green-text text-darken-2">search</i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query">Search Dogs</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_dogs') }}" class="btn-small orange text-shadow">Reset</a>
+                    <button type="submit" class="btn-small green text-shadow">
+                         Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+   {% if dogs|length > 0 %}
+   
     <ul class="collapsible">
         {% for dog in dogs %}
             <li>
@@ -33,4 +53,7 @@
             </li>
         {% endfor %}
     </ul>
+    {% else %}
+        <h3 class="center-align light-green-text text-shadow darken-2">No Results Found</h3>
+    {% endif %}
 {% endblock %}
