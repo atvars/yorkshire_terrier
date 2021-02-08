@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align light-green-text text-shadow darken-2">Add New Dog Post</h3>
+    <h3 class="center-align light-green-text text-shadow darken-2">Add My Dog</h3>
 
 <div class="row card-panel gray lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('add_dog') }}">
@@ -10,14 +10,10 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">topic</i>
                 <select id="cities_name" name="cities_name" class="validate" required>
-                    <option value="" disabled>Choose City</option>
-                    {% for cities in cities %}
-                            {% if cities.cities_name == dog.cities_name %}
-                                <option value="{{ cities.cities_name }}" selected>{{ cities.cities_name }}</option>
-                            {% else %}
-                                <option value="{{ cities.cities_name }}">{{ cities.cities_name }}</option>
-                            {% endif %}
-                        {% endfor %}
+                    <option value="" disabled selected>Choose City</option>
+                    {% for city in cities %}
+                        <option value="{{ city.cities_name }}">{{ city.cities_name }}</option>
+                    {% endfor %}
                     </select>
                     <label>City Select</label>
             </div>
@@ -50,7 +46,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">notes</i>
-                <textarea id="about_dog" name="about_dog" minlength="50" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{50,300}$" required> </textarea>
+                <textarea id="about_dog" name="about_dog" minlength="50" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{50,300}$" required></textarea>
                 <label for="about_dog">About a Dog</label>
             </div>
         </div>
@@ -66,63 +62,36 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix light-green-text text-darken-2">insert_photo</i>
-                    <input id="img_url" name="img_url" type="text" minlength="5" pattern="https://.*" class="validate"
+                     <input id="img_url" name="img_url" type="text" minlength="5" pattern="https://.*" class="validate"
                             required />
-                        <label for="image_url">Add an image URL</label>
+                        <label for="img_url">Add An Image URL</label>
                 </div>
             </div>
         <!--For letting everybody know that your dog found partner-->
         <div class="row">
-                <div class="input-field col s12">
-                    <div class="switch">
+				<div class="input-field col s12">
+					<div class="switch">
                         <i class="material-icons prefix light-green-text text-darken-2">favorite</i>
-                        <label for="found_partner">
-                            {% if dog.found_partner == "on" %}
-                                <input type="checkbox" id="found_partner" name="found_partner" checked>
-                            {% else %}
-                                <input type="checkbox" id="found_partner" name="found_partner">
-                            {% endif %}
+						<label for="found_partner">
+                            <input type="checkbox" id="found_partner" name="found_partner">
                             <span class="lever"></span>
                             Found Partner
                         </label>
-                    </div>
-                </div>
+					</div>
+				</div>
             </div>
+            
             <!--For submit button-->
             <div class="row">
                 <div class="col s12 center-align">
-                    <button type="submit" class="btn-small light-green darken-2 text-shadow">Edit Post<i class="material-icons right">create</i>
+                    <button type="submit" class="btn-small light-green darken-2 text-shadow">Add My Dog<i class="material-icons right">create</i>
                     </button>
                     <!-- cancel button -->
                     <a href="{{ url_for('get_dogs') }}" class="btn-small orange text-shadow">
-                        Cancel <i class="material-icons right">Cancel</i>
+                        Cancel <i class="material-icons right">cancel</i>
                     </a>
-                    <!--delete button-->
-                    <a data-target="{{ dog._id }}" class="btn-small red text-shadow modal-trigger">Delete <i class="material-icons right">delete</i>
-                    </a>                
-                </div>
+                    </div>
             </div>
-            <!--Confirming for deleting-->
-            <div id="{{ dog._id }}" class="modal center-align">
-                <div class="modal-content">
-                    <div class="row">
-                        <div class="col s12">
-                            <h2 class="red-text flow-text"><strong>Warning!</strong></h2>
-                            <h5 class="red-text"><strong>Deleting is permanent!</strong></h5>
-                        </div>
-                    </div>
-                </div>
-                    <div class="modal-footer modal-btns">
-                        <a class="btn-small orange text-shadow modal-close"
-                        href="#">
-                            Cancel <i class="material-icons right">cancel</i>
-                            </a>
-                            <a class="btn-small red text-shadow"
-                            href="{{ url_for('delete_dog', dog_id=dog._id) }}">
-                            Delete <i class="material-icons right">delete</i>
-                            </a>
-                    </div>
-        </div>
     </form>
 </div>
 
