@@ -21,7 +21,6 @@
         </form>
     </div>
 
-   {% if dogs|length > 0 %}
    
     <ul class="collapsible">
         {% for dog in dogs %}
@@ -53,7 +52,5 @@
             </li>
         {% endfor %}
     </ul>
-    {% else %}
-        <h3 class="center-align light-green-text text-shadow darken-2">No Results Found</h3>
-    {% endif %}
+
 {% endblock %}
