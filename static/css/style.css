@@ -1,3 +1,4 @@
+
 .text-shadow{
     text-shadow: 3px 3px 3px black;
 }
@@ -46,7 +47,7 @@ a.btn-large.red{
     text-align: center;
 }
 
-.card-image img {
-    height: 270px;
-    object-fit: cover;
+.main-footer{
+    text-align: center;
+    margin-top: 50px!important;
 }
