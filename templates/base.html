@@ -19,11 +19,12 @@
         <!--Main nav bar-->
         <nav class="light-green darken-1 text-shadow">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_dogs') }}" class="brand-logo ">Yorkshire Terrier</a>
+                <a href="{{ url_for('get_main') }}" class="brand-logo ">Yorkshire Terrier</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_dogs') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_main') }}">Home</a></li>
                     {% if session.user %}
+                        <li><a href="{{ url_for('get_dogs') }}">All Dog Posts</a></li>
                         <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                         <li><a href="{{ url_for('add_dog') }}">Add My Dog</a></li>
                         {% if session.user|lower == "admin"|lower %}
@@ -40,8 +41,9 @@
         <!--mobile side nav bar-->
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align light-green-text text-darken-3">Yorkshire Terrier</h4></li>
-            <li><a href="{{ url_for('get_dogs') }}">Home</a></li>
+            <li><a href="{{ url_for('get_main') }}">Home</a></li>
             {% if session.user %}
+                <li><a href="{{ url_for('get_dogs') }}">All Dog Posts</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('add_dog') }}">Add My Dog</a></li>
                 {% if session.user|lower == "admin"|lower %}

@@ -51,3 +51,9 @@ a.btn-large.red{
     text-align: center;
     margin-top: 50px!important;
 }
+
+.responsive{
+  width: 100%;
+  height: auto;
+}
+

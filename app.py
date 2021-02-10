@@ -18,11 +18,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
 @app.route("/get_dogs")
 def get_dogs():
     dogs = mongo.db.dogs.find()
     return render_template("dogs.html", dogs=dogs)
+
+
+@app.route("/")
+@app.route("/get_main")
+def get_main():
+    return render_template("main.html")
 
 
 # Search option for dogs
