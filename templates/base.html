@@ -57,6 +57,11 @@
         </ul>
     </header>
 
+    <h3 class="center-align light-green-text text-shadow darken-2">Find a partner for your Yorkie</h3>
+
+<div class="col s12 main-pic">
+    <img src="static/images/main-pic.jpg" alt="pic of yorkies" class="responsive">
+</div>
 
     <section>
     <!--Displaying Flash Messages-->
@@ -92,6 +97,12 @@
     </script>
     <script src="{{ url_for(
     'static', filename='js/script.js') }}"></script>
+    <!--To render markers on map-->
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <!--To render googlemap-->
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB40XQRWD7wFtLv4b_3FJOf61iloIT3Z2g&callback=initMap"></script>
+     <script src="{{ url_for(
+    'static', filename='js/maps.js') }}"></script>
     {% block scripts %}
     {% endblock %}
 

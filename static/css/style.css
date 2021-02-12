@@ -57,3 +57,18 @@ a.btn-large.red{
   height: auto;
 }
 
+.info-row{
+    margin: 40px;
+}
+
+.avatarpic{
+    width:90px;
+    border-radius: 30%;
+}
+
+div#map {
+    min-height: 360px;
+}
+.maps{
+    padding-bottom: 50px;
+}

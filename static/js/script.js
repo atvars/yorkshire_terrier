@@ -47,3 +47,28 @@ $(document).ready(function(){
 
 // for automatic year update for copyrights
    $("#copyright").text(new Date().getFullYear());
+
+
+// avatar pic for reviews animation
+$("img.avatarpic").mouseenter(function(){
+    $(this).animate({
+      opacity: "1",
+      height: "150px",
+      width: "150px"
+    });
+  });
+$("img.avatarpic").mouseleave(function(){
+    $(this).animate({
+      opacity: "1",
+      height: "100px",
+      width: "100px"
+    });
+  });
+
+// for paragraph hover changing color
+$(".hover").mouseenter(function(){
+$(this).css("color", "darkGreen");
+});
+$(".hover").mouseleave(function(){
+$(this).css("color", "black");
+});

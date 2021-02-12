@@ -1,10 +1,114 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align light-green-text text-shadow darken-2">Find a partner for your Yorkie</h3>
+<!--For finding partner info-->
+<section>
+    <h4 class="center-align light-green-text text-shadow darken-2">When It Comes To Love</h4>
 
-<div class="col s12 main-pic">
-    <img src="static/images/main-pic.jpg" alt="pic of yorkies" class="responsive">
+    <div class="row info-row">
+        <div class="col s12 m6">
+            <h5 class="center-align green-text darken-4">Find a partner for your Yorkie</h5>
+            <p class="hover">
+                We all know,that when its comes to dog
+                breeding its tough time for owners
+                and the dogs. We always want for our Yorkie 
+                the best, so we try to find the most beautiful, 
+                best looking, and the healthiest dog.
+                You can be sure - you can find best partner 
+                in Lincolnshire for your Yorkie in our site.
+                We have many dog posts from owners who is 
+                seeking the best for their four hand friend - 
+                just like you.
+                <a href="{{ url_for('register') }}">
+                    <em>Find Love For Yorkie</em></a>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <img src="static/images/find-partner.jpg" class="responsive" alt="pic of yorkies">
+        </div>
+    </div>
+
+    <!--What usful info posible to find in our page-->
+    <h4 class="center-align light-green-text text-shadow darken-2">Find All Info You Need</h4>
+
+    <div class="row info-row">
+        <div class="col s12 m6">
+            <img src="static/images/yorkie-info.jpg" class="responsive" alt="pic of yorkies">
+        </div>
+        <div class="col s12 m6">
+            <p class="hover">
+                Registered users of our site also have 
+                access, to newest information - about 
+                what is the best food for Yorkie, How 
+                to take care of coat, about excercises, 
+                about health for your friend. Home 
+                training is very important if you just 
+                got yourself a yorkie puppy. All that 
+                and a lot of more you will find here.
+                <a href="{{ url_for('register') }}">
+                    <em>Register Here</em></a>
+            </p>
+        </div>
+    </div>
+
+    <!--Reviews-->
+    <h4 class="center-align light-green-text text-shadow darken-2">What Our Users Have To Say</h4>
+
+    <div class="row info-row">
+        <div class="col s12 m6">
+           <img class="avatarpic" src="static/images/avatar-4.jpg" alt="Avatar Pic">
+            <p><span><strong>Andy Jhones</strong><br></span><i>I have a 2 years old male Yorkie</i></p>
+            <p class="hover">When it came to breeding time was looking in diferent web pages its realy hard to find perfect match for your lovely friend and if found one it always was to many miles away. But here I found perfect match just 2 miles away from my house.</p>
+        </div>
+        <div class="col s12 m6">
+             <img class="avatarpic" src="static/images/avatar-3.jpg" alt="Avatar Pic">
+            <p><span><strong>Sue Hill</strong><br></span><i>Got 3 month old Yorkie puppy</i></p>
+            <p class="hover">
+                Found usefull info about best food for my Yorkie. 
+                Also wasnt sure how many activity my puppy needs 
+                to grow healthy. I found all I need and more in this website.
+            </p>
+        </div>
+    </div>
+
+    <!--Site Sponsors-->
+    <h4 class="center-align light-green-text text-shadow darken-2">Thanks To Our Main Sponsor</h4>
+
+    <div class="row info-row">
+        <div class="col s12 m6">
+            <h6 class="green-text darken-4">PAWS</h6>
+            <p class="hover">
+                One of the best dog grooming salons 
+                in Lincolnshire called <strong>PAWS</strong> 
+                is the main sponsor and partner of our web page. 
+                Staff is very friendly with big experiance. 
+                You can choose various hair styles for 
+                your Yorkie. A treat and fresh water 
+                always provided. Our website registered users 
+                have <em>10% discount</em>
+                <a href="{{ url_for('register') }}">
+                    <em>Register Here</em></a>
+            </p>
+            <h6 class="green-text darken-4">Contact Info</h6><br>
+            <i class="material-icons prefix light-green-text text-darken-2">home</i><p>6 Albert terrace<br>
+            Boston<br>
+            PE21 8EN</p>
+            <i class="material-icons prefix light-green-text text-darken-2">email</i><p>paws@paws.co.uk</p>
+            <i class="material-icons prefix light-green-text text-darken-2">phone</i><p>07577777777</p>
+        </div>
+        <div class="col s12 m6">
+           <img src="static/images/yorkie-grooming.jpg" class="responsive" alt="pic of yorkies">
+        </div>
+    </div>
+
+    <!--Google maps-->
+<div class="container maps">
+    <div class="row">
+        <div class="col s12" id="map"></div>
+    </div>
 </div>
+
+</section>
+
 
 {% endblock %}
