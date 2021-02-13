@@ -93,7 +93,7 @@ def login():
     return render_template("login.html")
 
 
-# profiles page
+# privilege page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # session username from db
@@ -101,7 +101,7 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("privilege.html", username=username)
 
     return redirect(url_for("login"))
 

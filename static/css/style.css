@@ -26,7 +26,7 @@ a.btn-large.red{
     margin:10px;
 }
 
-
+/* Deleting confirmation modal */
 
 .modal {
    top: 20% !important;
@@ -46,12 +46,13 @@ a.btn-large.red{
 .modal .modal-footer {
     text-align: center;
 }
-
+ /* Footer */
 .main-footer{
     text-align: center;
     margin-top: 50px!important;
 }
-
+ 
+/* Making pic responsive on all screan sizes */
 .responsive{
   width: 100%;
   height: auto;
@@ -60,11 +61,12 @@ a.btn-large.red{
 .info-row{
     margin: 40px;
 }
-
+/* For testimonials images */
 .avatarpic{
     width:90px;
     border-radius: 30%;
 }
+/* for google  maps API */
 
 div#map {
     min-height: 360px;
@@ -88,6 +90,7 @@ div#map {
   height: 100%;
 }
 
+/* Giving some space for heading on privilege page */
 .profile-row{
     margin-top: 30px;
 }

@@ -33,7 +33,7 @@
                     <li><a href="{{ url_for('get_main') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('get_dogs') }}">All Dog Posts</a></li>
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">Privilege Page</a></li>
                         <li><a href="{{ url_for('add_dog') }}">Add My Dog</a></li>
                         {% if session.user|lower == "admin"|lower %}
                             <li><a href="{{ url_for('get_cities') }}">Manage Cities</a></li>
@@ -66,7 +66,7 @@
     </header>
 
 <section>
-<h3 class="center-align light-green-text text-shadow darken-2">Hi {{ username }} welcome to your profile</h3>
+<h3 class="center-align light-green-text text-shadow darken-2">Hi {{ username }} welcome to your privilege page</h3>
 
 <!--about dogs feeding-->
 <div class="row profile-row">
@@ -133,7 +133,41 @@
         </div>
       </div>
     </div>
+    <!--about excercises for yorkie-->
+    <div class="col s12 l6">
+        <h5 class="center-align light-green-text darken-2">Exercises For Yorkie</h5>
+      <div class="card-panel gray lighten-5">
+        <div class="iframe-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ktzvhR-npOc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="card-content">
+          <p class="hover">The Yorkshire Terrier has a very athletic build and this dog breed is very agile.
+          Although the Yorkie is a toy breed, only weighing a maximum of 7 lbs. ( 3.17 kg) per AKC standards, this dog does require regular exercise to maintain good health.</p>
+        </div>
+        <div class="card-action">
+          <a href="http://www.yorkieinfocenter.com/yorkie-exercise" target="_blank">Find out more</a>
+        </div>
+      </div>
+    </div>
+    <!--about potty training for yorkie-->
+    <div class="col s12 l6">
+        <h5 class="center-align light-green-text darken-2">Potty training your Yorkie</h5>
+      <div class="card-panel gray lighten-5">
+        <div class="iframe-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/V4iOkvBWTys" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="card-content">
+          <p class="hover">This breed is actually more easy to house train than some other types of breeds. In general, the Yorkie aims to please. 
+          However, in order to have quick success, you'll need to be prepared. This involves having the right things in place in order for housebreaking to work. 
+        </p>
+        </div>
+        <div class="card-action">
+          <a href="http://www.yorkieinfocenter.com/yorkie-house-training" target="_blank">Find out more</a>
+        </div>
+      </div>
+    </div>
 </div>
+
 </section>
 
 <section class="container" id="contactUs">
