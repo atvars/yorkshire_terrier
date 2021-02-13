@@ -1,10 +1,10 @@
 /* Fallowed Code Institute video from Rosie */
 function sendMail(contactForm) {
-    emailjs.send("carwash", "fullValet", {
-        "from_name": contactForm.name.value,
-        "from_dog_name": contactForm.dog_name.value,
-        "from_contact_info": contactForm.contact_info.value,
-        "from_about": contactForm.about.value
+    emailjs.send("yorkshire-terrier", "yorkie", {
+        "name": contactForm.name.value,
+        "dog_name": contactForm.dog_name.value,
+        "ontact_info": contactForm.contact_info.value,
+        "about": contactForm.about.value
     })
     .then(
         function(response) {

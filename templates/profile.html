@@ -11,10 +11,13 @@
     {% block styles %}
     {% endblock %}
     <title>Yorkshire Terrier</title>
-    <script type="text/javascript">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
    (function(){
       emailjs.init("user_ueGfaTWLgZ6tXwX5PgufA");
-   })();
+        })();
 </script>
 </head>
 
@@ -169,7 +172,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix light-green-text text-darken-2">notes</i>
-                <textarea id="about" name="about" minlength="50" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{50,300}$" required></textarea>
+                <textarea id="about" name="about" minlength="10" maxlength="300" class="materialize-textarea validate" pattern="^[a-zA-Z]{10,300}$" required></textarea>
                 <label for="about">Add Notes</label>
             </div>
         </div>
@@ -208,6 +211,8 @@
      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB40XQRWD7wFtLv4b_3FJOf61iloIT3Z2g&callback=initMap"></script>
      <script src="{{ url_for(
     'static', filename='js/maps.js') }}"></script>
+    <script src="{{ url_for(
+    'static', filename='js/sendEmail.js') }}"></script>
 
 </body>
 
